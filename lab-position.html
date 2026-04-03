@@ -2,40 +2,39 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 5: CSS Position Duyuru Kartı</title>
+    <title>Web Lab - Hafta 5</title>
     <link rel="stylesheet" href="lab-position.css">
 </head>
 <body>
 
-    <header>
-        <h1>Web Programlama Lab Etkinliği</h1>
-        <a href="index.html" class="back-link">Ana Sayfaya Dön</a> [cite: 3, 45]
-    </header>
+    <a href="index.html" class="nav-btn">Ana Sayfaya Dön</a> [cite: 3, 45]
 
-    <main>
-        <div class="announcement-container"> [cite: 10, 37]
+    <div class="card-wrapper">
+        <div class="announcement-card">
             
-            <div class="badge badge-top-left">Ücretsiz</div> [cite: 11, 25, 46]
-            <div class="badge badge-top-right">24 Nisan</div> [cite: 11, 25, 52]
-            <div class="badge badge-bottom-right">Son Kayıt</div> [cite: 11, 25, 53]
-
-            <div class="card-content">
-                <h2>Teknoloji Topluluğu Etkinliği</h2> [cite: 24, 47]
-                <p>Bu örnek sayfada amaç; CSS position özelliklerini kullanarak tek bir duyuru kartı üzerinde relative, absolute, fixed, z-index, hover, cursor ve animasyon mantığını birlikte göstermektir.</p> [cite: 24, 48, 49]
-                
-                <div class="location-box">
-                    <span class="location-label">Konum: Konferans Salonu</span> [cite: 18, 42, 50]
-                </div>
+            <div class="abs-tag tag-free">Ücretsiz</div> [cite: 46]
+            <div class="abs-tag tag-date">24 Nisan</div> [cite: 52]
+            
+            <div class="content">
+                <h2 class="title">Teknoloji Topluluğu Etkinliği</h2> [cite: 47]
+                <p class="desc">
+                    Bu örnek sayfada amaç; CSS position özelliklerini kullanarak 
+                    tek bir duyuru kartı üzerinde relative, absolute, fixed, z-index, 
+                    hover, cursor ve animasyon mantığını birlikte göstermektir. [cite: 48, 49]
+                </p>
             </div>
-        </div>
-    </main>
 
-    <div class="fixed-helper">
-        Yardımcı Menü [cite: 12, 26, 31, 54]
+            <div class="location-badge">Konum: Konferans Salonu</div> [cite: 18, 50]
+            
+            <div class="abs-tag tag-last">Son Kayıt</div> [cite: 53]
+
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026-LAB Position Örnek Çalışması - Ahmet Gemici (170423041)</p>
+    <div class="fixed-menu">Yardımcı Menü</div> [cite: 12, 54]
+
+    <footer class="footer">
+        2026-LAB Position Örnek Çalışması - Ahmet Gemici 170423041
     </footer>
 
 </body>
