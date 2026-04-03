@@ -1,101 +1,90 @@
-/* Genel Ayarlar */
+/* Sayfa Genel Ayarları */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
     margin: 0;
-    padding: 20px;
-    height: 2000px; /* Scroll yapılabilmesi için yükseklik verildi */ [cite: 12]
+    padding: 50px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    min-height: 150vh; /* Scroll oluşması için */
 }
 
-/* Kapsayıcı (Relative) */
-.announcement-container {
-    position: relative; [cite: 9, 10, 29]
-    width: 500px;
-    height: 350px;
-    background-color: #e0d7ff;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+/* Ana Kapsayıcı (Zorunlu kural: position relative) */
+.announcement-card {
+    position: relative; /* Absolute öğeler buna göre hizalanır */ [cite: 10, 37]
+    width: 450px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #e0d7ff; /* Görseldeki morumsu renk */
+    border-radius: 12px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 1; [cite: 42]
 }
 
-/* Absolute Öğeler */
-.badge {
-    position: absolute; [cite: 11, 25, 38]
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: 14px;
+/* Ortak Absolute Stil */
+.abs-tag {
+    position: absolute; [cite: 11, 38]
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
     font-weight: bold;
-    cursor: pointer; [cite: 13, 40]
-    transition: transform 0.3s ease; [cite: 14, 41]
+    cursor: pointer; /* Cursor değişimi kuralı */ [cite: 13, 40]
+    transition: all 0.3s ease; /* Geçiş animasyonu */ [cite: 14, 41]
 }
 
-.badge:hover {
-    transform: scale(1.1); [cite: 15, 32]
+/* Absolute Konumlandırmalar */
+.tag-free { top: 15px; left: 15px; background-color: #fff4bd; } [cite: 25]
+.tag-date { top: 15px; right: 15px; background-color: #d7ffd7; } [cite: 25]
+.tag-last { bottom: 15px; right: 15px; background-color: #ffd7d7; } [cite: 25]
+
+/* Hover ve Animasyonlar */
+.abs-tag:hover {
+    transform: translateY(-5px); /* Hareket animasyonu */ [cite: 15]
+    filter: brightness(0.9);
 }
 
-.badge-top-left {
-    top: 15px;
-    left: 15px;
-    background-color: #fff4bd;
-}
-
-.badge-top-right {
-    top: 15px;
-    right: 15px;
-    background-color: #d7ffd7;
-}
-
-.badge-bottom-right {
-    bottom: 15px;
-    right: 15px;
-    background-color: #ffd7d7;
-}
-
-/* Z-Index ve Üst Üste Binme */
-.location-box {
+/* Z-Index ve Üst Üste Binme Alanı */
+.location-badge {
     position: absolute;
-    bottom: 80px;
-    width: 80%;
-    left: 10%;
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 10; [cite: 18, 42]
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    z-index: 5; /* Kartın üstünde görünmesi için */ [cite: 18, 42]
 }
 
-/* Fixed Öğe (Sabit Yardımcı) */
-.fixed-helper {
-    position: fixed; [cite: 12, 31, 39]
-    bottom: 20px;
-    right: 20px;
-    background-color: #333;
+/* Fixed Yardımcı Menü */
+.fixed-menu {
+    position: fixed; [cite: 12, 39]
+    bottom: 30px;
+    right: 30px;
+    background: #333;
     color: white;
-    padding: 15px 25px;
-    border-radius: 30px;
-    cursor: help; [cite: 13, 40]
-    animation: pulse 2s infinite; [cite: 17, 41]
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: help; [cite: 13]
+    animation: bounce 2s infinite; /* Keyframes animasyonu */ [cite: 17, 41]
 }
 
-/* Animasyon Örneği (Keyframes) */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-/* Aktif Efekt (Active) */
-.back-link:active {
-    color: red; [cite: 16]
-}
-
-.back-link {
-    cursor: pointer; [cite: 13, 40]
+/* Link ve Footer */
+.nav-btn {
+    display: inline-block;
+    margin: 0 0 20px 50px;
     text-decoration: none;
-    color: #007bff;
+    color: #555;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #888;
 }
