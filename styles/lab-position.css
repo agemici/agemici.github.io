@@ -1,90 +1,162 @@
-/* Sayfa Genel Ayarları */
+/* Genel Stil Ayarları */
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
-    padding: 50px 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    min-height: 150vh; /* Scroll oluşması için */
+    padding: 0;
+    height: 150vh; /* Scroll oluşması için yükseklik verildi [cite: 12] */
 }
 
-/* Ana Kapsayıcı (Zorunlu kural: position relative) */
-.announcement-card {
-    position: relative; /* Absolute öğeler buna göre hizalanır */ [cite: 10, 37]
-    width: 450px;
-    height: 300px;
-    margin: 0 auto;
-    background-color: #e0d7ff; /* Görseldeki morumsu renk */
-    border-radius: 12px;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    z-index: 1; [cite: 42]
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
 }
 
-/* Ortak Absolute Stil */
-.abs-tag {
-    position: absolute; [cite: 11, 38]
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
+.back-link {
+    text-decoration: none;
+    color: #4a4ae2;
     font-weight: bold;
-    cursor: pointer; /* Cursor değişimi kuralı */ [cite: 13, 40]
-    transition: all 0.3s ease; /* Geçiş animasyonu */ [cite: 14, 41]
+    cursor: pointer; /* Etkileşimli alan 1 [cite: 13, 40] */
 }
 
-/* Absolute Konumlandırmalar */
-.tag-free { top: 15px; left: 15px; background-color: #fff4bd; } [cite: 25]
-.tag-date { top: 15px; right: 15px; background-color: #d7ffd7; } [cite: 25]
-.tag-last { bottom: 15px; right: 15px; background-color: #ffd7d7; } [cite: 25]
-
-/* Hover ve Animasyonlar */
-.abs-tag:hover {
-    transform: translateY(-5px); /* Hareket animasyonu */ [cite: 15]
-    filter: brightness(0.9);
+/* Ana Konteyner */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
 }
 
-/* Z-Index ve Üst Üste Binme Alanı */
-.location-badge {
+/* 1. Relative Kapsayıcı [cite: 10, 37] */
+.announcement-card {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    background-color: #e0e7ff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease; /* Etkileşim 1: Transition [cite: 14, 41] */
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+    cursor: default;
+}
+
+/* 2. Absolute Öğeler [cite: 11, 38] */
+.badge {
     position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    padding: 10px 25px;
+    padding: 5px 12px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    z-index: 5; /* Kartın üstünde görünmesi için */ [cite: 18, 42]
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
-/* Fixed Yardımcı Menü */
-.fixed-menu {
-    position: fixed; [cite: 12, 39]
+.badge-free {
+    top: 20px;
+    left: 20px;
+    background-color: #fef3c7;
+    color: #92400e;
+    z-index: 2; /* Z-index Kullanımı  */
+}
+
+.badge-date {
+    top: 20px;
+    right: 20px;
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.badge-deadline {
+    bottom: 20px;
+    right: 20px;
+    background-color: #fee2e2;
+    color: #991b1b;
+    cursor: pointer; /* Etkileşimli alan 2 [cite: 13] */
+    transition: background-color 0.3s;
+}
+
+.badge-deadline:hover {
+    background-color: #f87171;
+    color: white;
+}
+
+/* Z-index ve Absolute İçeren Konum Kutusu [cite: 18] */
+.location-box {
+    position: absolute;
+    bottom: 80px;
+    right: -10px;
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 3;
+    animation: slideIn 1s ease-out; /* Etkileşim 2: Keyframes [cite: 17, 41] */
+}
+
+/* Dekoratif Arka Plan Öğesi */
+.decorative-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #c7d2fe;
+    border-radius: 50%;
+    right: -50px;
+    bottom: -50px;
+    z-index: 1; /* Diğer metinlerin altında kalması için [cite: 18] */
+}
+
+/* 3. Fixed Öğe [cite: 12, 31, 39] */
+.fixed-support {
+    position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #333;
+    width: 60px;
+    height: 60px;
+    background-color: #4a4ae2;
     color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    cursor: help; [cite: 13]
-    animation: bounce 2s infinite; /* Keyframes animasyonu */ [cite: 17, 41]
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: help; /* Etkileşimli alan 3 [cite: 13, 40] */
+    z-index: 100;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.fixed-support .tooltip {
+    visibility: hidden;
+    position: absolute;
+    right: 70px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
-/* Link ve Footer */
-.nav-btn {
-    display: inline-block;
-    margin: 0 0 20px 50px;
-    text-decoration: none;
-    color: #555;
-    font-weight: bold;
+.fixed-support:hover .tooltip {
+    visibility: visible;
 }
 
-.footer {
+/* Keyframes Animasyonu [cite: 17] */
+@keyframes slideIn {
+    from {
+        right: -100px;
+        opacity: 0;
+    }
+    to {
+        right: -10px;
+        opacity: 1;
+    }
+}
+
+footer {
     text-align: center;
-    margin-top: 50px;
-    color: #888;
+    padding: 40px;
+    color: #666;
 }
