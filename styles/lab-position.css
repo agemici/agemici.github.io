@@ -1,68 +1,54 @@
-/* Genel Stil Ayarları */
+/* Genel Stil ve Arka Plan */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    height: 150vh; /* Scroll oluşması için yükseklik verildi [cite: 12] */
-}
-
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-}
-
-.back-link {
-    text-decoration: none;
-    color: #4a4ae2;
-    font-weight: bold;
-    cursor: pointer; /* Etkileşimli alan 1 [cite: 13, 40] */
-}
-
-/* Ana Konteyner */
-.container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    min-height: 150vh; /* Scroll zorunluluğu için [cite: 12] */
 }
 
-/* 1. Relative Kapsayıcı [cite: 10, 37] */
+header { padding: 20px; text-align: center; }
+.back-link { color: #003366; text-decoration: none; font-weight: bold; cursor: pointer; }
+
+/* Ana Duyuru Kartı Kapsayıcısı [cite: 10] */
 .announcement-card {
-    position: relative;
-    width: 500px;
-    height: 350px;
-    background-color: #e0e7ff;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease; /* Etkileşim 1: Transition [cite: 14, 41] */
+    position: relative; /* [cite: 9, 37] */
+    width: 600px;
+    height: 400px;
+    margin-top: 50px;
+    padding: 40px;
+    border-radius: 20px;
+    /* Görseldeki soft gradient arka plan */
+    background: linear-gradient(135deg, #eef2ff 0%, #fff9e6 100%);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    overflow: visible; /* Etiketlerin taşabilmesi için */
 }
 
-.announcement-card:hover {
-    transform: translateY(-5px);
-    cursor: default;
-}
+/* Başlık ve Metin [cite: 22, 24] */
+h2 { color: #003366; font-size: 2.2rem; margin-bottom: 20px; }
+p { color: #555; line-height: 1.6; font-size: 1.1rem; width: 90%; }
 
-/* 2. Absolute Öğeler [cite: 11, 38] */
+/* Absolute Bilgi Etiketleri [cite: 11, 25, 38] */
 .badge {
-    position: absolute;
-    padding: 5px 12px;
-    border-radius: 8px;
-    font-size: 0.8rem;
+    position: absolute; /* [cite: 9] */
+    padding: 8px 20px;
+    border-radius: 10px;
     font-weight: bold;
 }
 
+/* Ücretsiz Rozeti */
 .badge-free {
     top: 20px;
     left: 20px;
     background-color: #fef3c7;
     color: #92400e;
-    z-index: 2; /* Z-index Kullanımı  */
+    cursor: help; /* [cite: 13, 40] */
 }
 
+/* Tarih Rozeti */
 .badge-date {
     top: 20px;
     right: 20px;
@@ -70,93 +56,74 @@ header {
     color: #065f46;
 }
 
+/* Son Kayıt Yazısı */
 .badge-deadline {
     bottom: 20px;
-    right: 20px;
-    background-color: #fee2e2;
-    color: #991b1b;
-    cursor: pointer; /* Etkileşimli alan 2 [cite: 13] */
-    transition: background-color 0.3s;
+    right: 30px;
+    color: #a82222;
+    font-size: 1.1rem;
 }
 
-.badge-deadline:hover {
-    background-color: #f87171;
-    color: white;
-}
-
-/* Z-index ve Absolute İçeren Konum Kutusu [cite: 18] */
+/* Konum Kutusu - Absolute ve Z-index [cite: 18, 42] */
 .location-box {
     position: absolute;
-    bottom: 80px;
-    right: -10px;
-    background-color: white;
-    padding: 15px 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    z-index: 3;
-    animation: slideIn 1s ease-out; /* Etkileşim 2: Keyframes [cite: 17, 41] */
+    bottom: 100px;
+    right: 20px;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    color: #333;
+    font-size: 1.2rem;
+    z-index: 5; /* Üstte durması için [cite: 18] */
+    animation: bounceIn 1s ease; /* [cite: 17, 41] */
 }
 
-/* Dekoratif Arka Plan Öğesi */
-.decorative-circle {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: #c7d2fe;
-    border-radius: 50%;
-    right: -50px;
-    bottom: -50px;
-    z-index: 1; /* Diğer metinlerin altında kalması için [cite: 18] */
+/* Kayıt Ol Butonu - Hover Efekti  */
+.register-btn {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer; /* [cite: 13, 40] */
+    margin-top: 20px;
+    transition: all 0.3s ease; /* [cite: 14, 41] */
 }
 
-/* 3. Fixed Öğe [cite: 12, 31, 39] */
+.register-btn:hover {
+    background-color: #0056b3; /* Renk değişimi */
+    transform: scale(1.05);
+}
+
+.register-btn:active {
+    transform: scale(0.95); /* [cite: 16] */
+}
+
+/* Fixed Öğe [cite: 9, 12, 31, 39] */
 .fixed-support {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: #4a4ae2;
+    bottom: 40px;
+    right: 40px;
+    background-color: #003366;
     color: white;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-    cursor: help; /* Etkileşimli alan 3 [cite: 13, 40] */
+    cursor: pointer; /* [cite: 40] */
     z-index: 100;
 }
 
-.fixed-support .tooltip {
-    visibility: hidden;
-    position: absolute;
-    right: 70px;
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    white-space: nowrap;
+/* Animasyon Tanımı [cite: 17] */
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-.fixed-support:hover .tooltip {
-    visibility: visible;
-}
-
-/* Keyframes Animasyonu [cite: 17] */
-@keyframes slideIn {
-    from {
-        right: -100px;
-        opacity: 0;
-    }
-    to {
-        right: -10px;
-        opacity: 1;
-    }
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #666;
-}
+footer { margin-top: 50px; color: #888; }
