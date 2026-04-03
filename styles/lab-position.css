@@ -7,33 +7,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 150vh; /* Scroll zorunluluğu için [cite: 12] */
+    min-height: 150vh; 
 }
 
 header { padding: 20px; text-align: center; }
 .back-link { color: #003366; text-decoration: none; font-weight: bold; cursor: pointer; }
 
-/* Ana Duyuru Kartı Kapsayıcısı [cite: 10] */
+/* Ana Duyuru Kartı Kapsayıcısı */
 .announcement-card {
-    position: relative; /* [cite: 9, 37] */
+    position: relative; 
     width: 600px;
     height: 400px;
     margin-top: 50px;
     padding: 40px;
     border-radius: 20px;
-    /* Görseldeki soft gradient arka plan */
     background: linear-gradient(135deg, #eef2ff 0%, #fff9e6 100%);
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    overflow: visible; /* Etiketlerin taşabilmesi için */
+    overflow: visible; 
 }
 
-/* Başlık ve Metin [cite: 22, 24] */
+/* Başlık ve Metin */
 h2 { color: #003366; font-size: 2.2rem; margin-bottom: 20px; }
 p { color: #555; line-height: 1.6; font-size: 1.1rem; width: 90%; }
 
-/* Absolute Bilgi Etiketleri [cite: 11, 25, 38] */
+/* Absolute Bilgi Etiketleri */
 .badge {
-    position: absolute; /* [cite: 9] */
+    position: absolute; 
     padding: 8px 20px;
     border-radius: 10px;
     font-weight: bold;
@@ -45,7 +44,7 @@ p { color: #555; line-height: 1.6; font-size: 1.1rem; width: 90%; }
     left: 20px;
     background-color: #fef3c7;
     color: #92400e;
-    cursor: help; /* [cite: 13, 40] */
+    cursor: help; 
 }
 
 /* Tarih Rozeti */
@@ -56,18 +55,22 @@ p { color: #555; line-height: 1.6; font-size: 1.1rem; width: 90%; }
     color: #065f46;
 }
 
-/* Son Kayıt Yazısı */
+/* Son Kayıt Yazısı - Yeni Konum ve Animasyon */
 .badge-deadline {
-    bottom: 20px;
+    position: absolute;
+    bottom: 40px; /* Konum kutusunun altına hizalandı */
     right: 30px;
-    color: #a82222;
+    color: #d93025;
     font-size: 1.1rem;
+    font-weight: bold;
+    /* Silinip tekrar gözükme efekti */
+    animation: blinkText 1.5s ease-in-out infinite; 
 }
 
-/* Konum Kutusu - Absolute ve Z-index [cite: 18, 42] */
+/* Konum Kutusu */
 .location-box {
     position: absolute;
-    bottom: 100px;
+    bottom: 90px; /* Son kayıt yazısına yer açmak için biraz yukarı alındı */
     right: 20px;
     background: white;
     padding: 20px 30px;
@@ -75,34 +78,37 @@ p { color: #555; line-height: 1.6; font-size: 1.1rem; width: 90%; }
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     color: #333;
     font-size: 1.2rem;
-    z-index: 5; /* Üstte durması için [cite: 18] */
-    animation: bounceIn 1s ease; /* [cite: 17, 41] */
+    z-index: 5; 
+    animation: bounceIn 1s ease; 
 }
 
-/* Kayıt Ol Butonu - Hover Efekti  */
+/* Renkli ve Etkileşimli Kayıt Ol Butonu */
 .register-btn {
-    background-color: #003366;
-    color: white;
+    /* Renkli degrade arka plan */
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb); 
+    color: #111;
     border: none;
     padding: 15px 40px;
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    cursor: pointer; /* [cite: 13, 40] */
+    cursor: pointer; /* İmleç burada değişiyor */
     margin-top: 20px;
-    transition: all 0.3s ease; /* [cite: 14, 41] */
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .register-btn:hover {
-    background-color: #0056b3; /* Renk değişimi */
     transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    color: white;
 }
 
 .register-btn:active {
-    transform: scale(0.95); /* [cite: 16] */
+    transform: scale(0.95); 
 }
 
-/* Fixed Öğe [cite: 9, 12, 31, 39] */
+/* Fixed Öğe */
 .fixed-support {
     position: fixed;
     bottom: 40px;
@@ -115,11 +121,18 @@ p { color: #555; line-height: 1.6; font-size: 1.1rem; width: 90%; }
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer; /* [cite: 40] */
+    cursor: pointer; 
     z-index: 100;
 }
 
-/* Animasyon Tanımı [cite: 17] */
+/* Yanıp Sönme Animasyonu (Yeni) */
+@keyframes blinkText {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Konum Kutusu Animasyonu */
 @keyframes bounceIn {
     0% { transform: scale(0.5); opacity: 0; }
     70% { transform: scale(1.1); }
