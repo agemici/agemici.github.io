@@ -2,37 +2,41 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Position Lab</title>
-
-    <!-- SADECE BU CSS -->
-    <link rel="stylesheet" href="lab-position.css">
+    <title>Lab 5: CSS Position Duyuru Kartı</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- FIXED -->
-<div class="fixed-help">📌 Duyuru</div>
+    <header>
+        <h1>Web Programlama Lab Etkinliği</h1>
+        <a href="index.html" class="back-link">Ana Sayfaya Dön</a> [cite: 3, 45]
+    </header>
 
-<h1 style="text-align:center;">Etkinlik Duyurusu</h1>
+    <main>
+        <div class="announcement-container"> [cite: 10, 37]
+            
+            <div class="badge badge-top-left">Ücretsiz</div> [cite: 11, 25, 46]
+            <div class="badge badge-top-right">24 Nisan</div> [cite: 11, 25, 52]
+            <div class="badge badge-bottom-right">Son Kayıt</div> [cite: 11, 25, 53]
 
-<div class="card-container">
+            <div class="card-content">
+                <h2>Teknoloji Topluluğu Etkinliği</h2> [cite: 24, 47]
+                <p>Bu örnek sayfada amaç; CSS position özelliklerini kullanarak tek bir duyuru kartı üzerinde relative, absolute, fixed, z-index, hover, cursor ve animasyon mantığını birlikte göstermektir.</p> [cite: 24, 48, 49]
+                
+                <div class="location-box">
+                    <span class="location-label">Konum: Konferans Salonu</span> [cite: 18, 42, 50]
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div class="card">
-        <h2>Yazılım Topluluğu</h2>
-        <p>Yeni teknolojiler ve networking seni bekliyor!</p>
-
-        <!-- ABSOLUTE -->
-        <span class="badge badge1">📅 10 Nisan</span>
-        <span class="badge badge2">📍 Kampüs</span>
-        <span class="badge badge3">⏰ 14:00</span>
-
-        <button class="join-btn">Katıl</button>
+    <div class="fixed-helper">
+        Yardımcı Menü [cite: 12, 26, 31, 54]
     </div>
 
-</div>
-
-<footer style="text-align:center; margin-top:50px;">
-    <p>© 2026</p>
-</footer>
+    <footer>
+        <p>&copy; 2026-LAB Position Örnek Çalışması - Ahmet Gemici (170423041)</p>
+    </footer>
 
 </body>
 </html>
