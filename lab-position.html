@@ -2,39 +2,44 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Web Lab - Hafta 5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab: CSS Position Duyuru Kartı</title>
     <link rel="stylesheet" href="lab-position.css">
 </head>
 <body>
 
-    <a href="index.html" class="nav-btn">Ana Sayfaya Dön</a> [cite: 3, 45]
+    <header>
+        <h1>Üniversite Etkinlik Portalı</h1>
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+    </header>
 
-    <div class="card-wrapper">
+    <main class="container">
         <div class="announcement-card">
             
-            <div class="abs-tag tag-free">Ücretsiz</div> [cite: 46]
-            <div class="abs-tag tag-date">24 Nisan</div> [cite: 52]
-            
-            <div class="content">
-                <h2 class="title">Teknoloji Topluluğu Etkinliği</h2> [cite: 47]
-                <p class="desc">
-                    Bu örnek sayfada amaç; CSS position özelliklerini kullanarak 
-                    tek bir duyuru kartı üzerinde relative, absolute, fixed, z-index, 
-                    hover, cursor ve animasyon mantığını birlikte göstermektir. [cite: 48, 49]
-                </p>
+            <div class="badge badge-free">Ücretsiz</div>
+            <div class="badge badge-date">24 Nisan</div>
+            <div class="badge badge-deadline">Son Kayıt</div>
+
+            <div class="card-content">
+                <h2>Teknoloji Topluluğu Etkinliği</h2>
+                <p>Bu örnek sayfada amaç; CSS position özelliklerini kullanarak tek bir duyuru kartı üzerinde relative, absolute, fixed, z-index, hover, cursor ve animasyon mantığını birlikte göstermektir.</p>
+                
+                <div class="location-box">
+                    Konum: Konferans Salonu
+                </div>
             </div>
 
-            <div class="location-badge">Konum: Konferans Salonu</div> [cite: 18, 50]
-            
-            <div class="abs-tag tag-last">Son Kayıt</div> [cite: 53]
-
+            <div class="decorative-circle"></div>
         </div>
+    </main>
+
+    <div class="fixed-support">
+        ?
+        <span class="tooltip">Yardımcı Menü</span>
     </div>
 
-    <div class="fixed-menu">Yardımcı Menü</div> [cite: 12, 54]
-
-    <footer class="footer">
-        2026-LAB Position Örnek Çalışması - Ahmet Gemici 170423041
+    <footer>
+        <p>&copy; 2026-LAB Position Örnek Çalışması</p>
     </footer>
 
 </body>
