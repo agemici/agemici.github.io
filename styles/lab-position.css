@@ -1,136 +1,101 @@
-/* GENEL AYARLAR */
+/* Genel Ayarlar */
 body {
     font-family: Arial, sans-serif;
-    background: #f4f7f9;
+    background-color: #f0f2f5;
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    padding: 20px;
+    height: 2000px; /* Scroll yapılabilmesi için yükseklik verildi */ [cite: 12]
 }
 
-/* KAPSAYICI */
-.card-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-}
-
-/* RELATIVE: Ana Duyuru Kartı */
-.card {
-    position: relative; /* Absolute öğeler buna göre hizalanacak */
-    width: 450px;
-    padding: 40px 30px;
-    background: white;
+/* Kapsayıcı (Relative) */
+.announcement-container {
+    position: relative; [cite: 9, 10, 29]
+    width: 500px;
+    height: 350px;
+    background-color: #e0d7ff;
+    margin: 50px auto;
+    padding: 20px;
     border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    overflow: hidden; /* Taşan dekoratif öğeleri gizlemek için */
 }
 
-/* Z-INDEX KULLANIMI: Dekoratif Arka Plan Şekli */
-.card::before {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    background: rgba(0, 0, 255, 0.05); /* Açık mavi transparan bir daire */
-    border-radius: 50%;
-    z-index: 0; /* Arka planda kalacak */
-}
-
-/* Kart İçeriğinin Z-Index Ayarı (Dekorun üstünde kalmaları için) */
-.card h2, .card p, .join-btn {
-    position: relative;
-    z-index: 1; 
-}
-
-/* ABSOLUTE: Bilgi Etiketleri (Rozetler) */
+/* Absolute Öğeler */
 .badge {
-    position: absolute;
-    background: blue;
-    color: white;
-    padding: 8px 12px;
+    position: absolute; [cite: 11, 25, 38]
+    padding: 8px 15px;
     border-radius: 8px;
-    cursor: pointer;
     font-size: 14px;
-    z-index: 2; /* Her şeyin üstünde */
-    /* 1. ETKİLEŞİM: Yumuşak geçiş (Transition) */
-    transition: background 0.3s ease, transform 0.3s ease; 
+    font-weight: bold;
+    cursor: pointer; [cite: 13, 40]
+    transition: transform 0.3s ease; [cite: 14, 41]
 }
 
-/* Rozetleri kartın köşelerine tam oturtmak veya taşırmak absolute mantığını daha iyi gösterir */
-.badge1 {
-    top: -15px; 
-    left: 20px;
-}
-
-.badge2 {
-    top: -15px;
-    right: 20px;
-}
-
-.badge3 {
-    bottom: 20px;
-    left: -15px;
-}
-
-/* Hover durumunda rozet etkileşimi */
 .badge:hover {
-    background: darkblue;
-    transform: translateY(-3px); /* Yukarı doğru hafifçe kayar */
+    transform: scale(1.1); [cite: 15, 32]
 }
 
-/* BUTTON: @keyframes ve :active kullanımı */
-.join-btn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: green;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s ease;
-    /* 2. ETKİLEŞİM: Sürekli çalışan nefes alma animasyonu */
-    animation: pulse 2s infinite; 
+.badge-top-left {
+    top: 15px;
+    left: 15px;
+    background-color: #fff4bd;
 }
 
-.join-btn:hover {
-    background: darkgreen;
-    animation: none; /* Üzerine gelince animasyon dursun */
+.badge-top-right {
+    top: 15px;
+    right: 15px;
+    background-color: #d7ffd7;
 }
 
-/* 3. ETKİLEŞİM: Tıklanma (Active) efekti */
-.join-btn:active {
-    transform: scale(0.95); 
+.badge-bottom-right {
+    bottom: 15px;
+    right: 15px;
+    background-color: #ffd7d7;
 }
 
-/* FIXED: Sabit Yardımcı Öğe */
-.fixed-help {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: red;
-    color: white;
-    padding: 10px 15px;
+/* Z-Index ve Üst Üste Binme */
+.location-box {
+    position: absolute;
+    bottom: 80px;
+    width: 80%;
+    left: 10%;
+    background-color: white;
+    padding: 15px;
     border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 100; /* Sayfada her zaman en üstte kalır */
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10; [cite: 18, 42]
 }
 
-.fixed-help:hover {
-    transform: scale(1.1);
+/* Fixed Öğe (Sabit Yardımcı) */
+.fixed-helper {
+    position: fixed; [cite: 12, 31, 39]
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    cursor: help; [cite: 13, 40]
+    animation: pulse 2s infinite; [cite: 17, 41]
 }
 
-/* Animasyon Tanımlaması */
+/* Animasyon Örneği (Keyframes) */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
+}
+
+/* Aktif Efekt (Active) */
+.back-link:active {
+    color: red; [cite: 16]
+}
+
+.back-link {
+    cursor: pointer; [cite: 13, 40]
+    text-decoration: none;
+    color: #007bff;
 }
