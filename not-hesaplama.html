@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Not Hesaplama</title>
+    <style>
+        body {
+            /* Lacivert ve koyu mavi arası şık bir degrade */
+            background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #004e92;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+        input:focus {
+            border-color: #004e92;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.1s;
+        }
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .result-box h3 { margin: 0 0 10px 0; }
+        .result-box p { margin: 5px 0; font-size: 15px; }
+        
+        .gec { background-color: #28a745; } 
+        .kal { background-color: #dc3545; } 
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Not Hesaplayıcı</h2>
+        <input type="text" id="adSoyad" placeholder="Öğrenci Adı Soyadı (Örn: Ahmet Gemici)">
+        <input type="number" id="vizeNotu" placeholder="Vize Notu">
+        <input type="number" id="finalNotu" placeholder="Final Notu">
+        <button onclick="notHesapla()">Hesapla</button>
+
+        <div id="sonucAlani" class="result-box">
+            <h3 id="sonucAd"></h3>
+            <p id="sonucOrtalama"></p>
+            <p id="sonucHarf"></p>
+            <p id="sonucDurum"></p>
+        </div>
+    </div>
+
+    <script>
+        function notHesapla() {
+            const ad = document.getElementById('adSoyad').value;
+            const vize = parseFloat(document.getElementById('vizeNotu').value);
+            const final = parseFloat(document.getElementById('finalNotu').value);
+
+            if (!ad || isNaN(vize) || isNaN(final)) {
+                alert("Lütfen tüm alanları eksiksiz doldurun.");
+                return;
+            }
+
+            const ortalama = (vize * 0.4) + (final * 0.6);
+            let harfNotu = "FF";
+            
+            if (ortalama >= 90) harfNotu = "AA";
+            else if (ortalama >= 80) harfNotu = "BA";
+            else if (ortalama >= 70) harfNotu = "BB";
+            else if (ortalama >= 60) harfNotu = "CB";
+            else if (ortalama >= 50) harfNotu = "CC";
+            else if (ortalama >= 40) harfNotu = "DC";
+            else if (ortalama >= 30) harfNotu = "DD";
+
+            const gectiMi = ortalama >= 50;
+            const durum = gectiMi ? "Geçti" : "Kaldı";
+
+            document.getElementById('sonucAd').innerText = ad;
+            document.getElementById('sonucOrtalama').innerText = "Ortalama: " + ortalama.toFixed(2);
+            document.getElementById('sonucHarf').innerText = "Harf Notu: " + harfNotu;
+            document.getElementById('sonucDurum').innerText = "Durum: " + durum;
+            
+            const sonucAlani = document.getElementById('sonucAlani');
+            sonucAlani.className = 'result-box';
+            if(gectiMi) {
+                sonucAlani.classList.add('gec');
+            } else {
+                sonucAlani.classList.add('kal');
+            }
+            
+            sonucAlani.style.display = "block";
+        }
+    </script>
+</body>
+</html>
