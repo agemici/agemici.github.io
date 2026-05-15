@@ -258,3 +258,192 @@ table tr:last-child td {
     border-bottom: none;
 }
 
+
+/* ======================================================== */
+/* --- FLEXBOX ÖDEV SAYFASI (flexbox.html) EKLENTİLERİ --- */
+/* ======================================================== */
+
+/* Sayfanın genel padding'ini ödev sayfası için sıfırla */
+body.lab-body {
+    padding: 0;
+    margin: 0;
+    background-color: #f4f5f7;
+    overflow-x: hidden;
+}
+
+/* Genel Zorunlu Şart: 100vh wrapper */
+.lab-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Ortak Buton Stili */
+.lab-btn {
+    background-color: #799bea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* 1) Navbar */
+.lab-nav {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #ececec;
+    border-bottom: 1px solid #d1d1d1;
+    text-align: left; /* Senin genel stili eziyoruz */
+}
+
+.lab-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+}
+
+.lab-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555 !important;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0;
+}
+
+.lab-links a:hover {
+    background-color: transparent !important;
+    text-decoration: underline;
+}
+
+/* 2) Hero Bölümü */
+.lab-hero {
+    display: flex;
+    height: 30vh;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px 40px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.lab-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.lab-hero-content h1 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.lab-hero-content p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.lab-hero-image {
+    flex: 1;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab-placeholder-icon {
+    color: #a0a0a0;
+    font-size: 20px;
+}
+
+/* 3) Kartlar Bölümü */
+.lab-cards-section {
+    display: flex;
+    height: 30vh;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px 40px;
+    border-bottom: 1px solid #d1d1d1;
+    align-items: center;
+}
+
+.lab-card {
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 calc(33.333% - 15px); /* Kartların genişliği 3 kolon olacak şekilde ayarlandı */
+    height: calc(50% - 15px); /* İki satıra rahat sığsın */
+}
+
+.lab-card h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.lab-card p {
+    font-size: 13px;
+    color: #777;
+    flex-grow: 1;
+}
+
+/* 4) Flex Grow Uygulama */
+.lab-flex-grow-section {
+    display: flex;
+    height: 20vh;
+    align-items: stretch;
+    gap: 15px;
+    padding: 20px 40px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.lab-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.lab-box h4 { margin-bottom: 5px; color: #333; }
+.lab-box p { font-size: 13px; color: #555; }
+
+/* Flex Grow kuralları */
+.lab-box1 { flex-grow: 1; background-color: #e4f0fb; }
+.lab-box2 { flex-grow: 2; background-color: #e2f3df; }
+.lab-box2 .lab-btn { background-color: #79ba7f; }
+.lab-box3 { flex-grow: 1; background-color: #fae6ce; }
+.lab-box3 .lab-btn { background-color: #ebaa77; }
+
+/* 5) Footer */
+.lab-footer {
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e2e2;
+    color: #666;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+.lab-footer p {
+    color: #666;
+}
