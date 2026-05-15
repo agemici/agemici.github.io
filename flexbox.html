@@ -4,87 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox Ödev - Ahmet Gemici</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body class="lab-body">
-    <div class="lab-wrapper">
+    <style>
+        /* SADECE BU SAYFAYA ÖZEL SIFIRLAMA */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f9;
+            color: #333;
+            overflow: hidden; /* Ekrandan taşmayı engeller, tam 100vh sığdırır */
+        }
+
+        /* 1) GENEL KAPSAYICI (100vh ve flex column) */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ORTAK BUTON TASARIMI */
+        .btn {
+            background-color: #0b4f2c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: auto; /* Butonu hep alta iter */
+            font-weight: bold;
+        }
+        .btn:hover { background-color: #0f6a3a; }
+
+        /* 2) NAVBAR - 10vh */
+        .navbar {
+            display: flex;
+            height: 10vh;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            background-color: #0b4f2c; /* Senin yeşil teman */
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar .links {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .links a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .navbar .links a:hover {
+            color: #bdf2d5;
+        }
+
+        /* 3) HERO BÖLÜMÜ - 30vh */
+        .hero {
+            display: flex;
+            flex-direction: row;
+            height: 30vh;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 20px 40px;
+            background-color: white;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            flex: 1;
+            padding-right: 20px;
+        }
+        .hero-text h1 { font-size: 28px; margin-bottom: 10px; color: #0b4f2c; }
+        .hero-text p { font-size: 16px; margin-bottom: 15px; }
         
-        <nav class="lab-nav">
-            <div class="lab-logo">LOGO</div>
-            <div class="lab-links">
-                <a href="index.html">Ana Sayfa (Portfolyoya Dön)</a>
-                <a href="#">Hakkında</a>
-                <a href="#">Dersler</a>
-                <a href="#">İletişim</a>
+        .hero-image {
+            flex: 1;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* 4) KARTLAR BÖLÜMÜ - 30vh */
+        .cards-section {
+            display: flex;
+            height: 30vh;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px 40px;
+            background-color: #f4f7f9;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1 1 calc(25% - 15px); /* Ekrana sığması için hesaplama */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .card h3 { font-size: 16px; margin-bottom: 5px; color: #0b4f2c; }
+        .card p { font-size: 13px; color: #666; margin-bottom: 10px; }
+
+        /* 5) FLEX GROW UYGULAMASI - 20vh */
+        .grow-section {
+            display: flex;
+            height: 20vh;
+            align-items: stretch;
+            gap: 15px;
+            padding: 15px 40px;
+            background-color: white;
+            border-top: 2px solid #e2e8f0;
+        }
+        .grow-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .grow-box h4 { margin-bottom: 5px; font-size: 18px; }
+        .grow-box p { font-size: 13px; margin-bottom: 10px; }
+        
+        .box1 { flex-grow: 1; background-color: #001f5b; } /* Senin lacivert teman */
+        .box2 { flex-grow: 2; background-color: #8b0000; } /* Senin bordo teman */
+        .box3 { flex-grow: 1; background-color: #001f5b; }
+
+        /* 6) FOOTER - 10vh */
+        .footer {
+            display: flex;
+            height: 10vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #bdf2d5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <nav class="navbar">
+            <div class="logo">Ahmet Gemici</div>
+            <div class="links">
+                <a href="index.html">Ana Sayfa (Geri Dön)</a>
+                <a href="about.html">Hakkımda</a>
+                <a href="interests.html">İlgi Alanlarım</a>
+                <a href="contact.html">İletişim</a>
             </div>
         </nav>
 
-        <section class="lab-hero">
-            <div class="lab-hero-content">
-                <h1>Hero Başlık</h1>
-                <p>Açıklama metni buraya gelecek.</p>
-                <button class="lab-btn">Buton</button>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Bilgisayar Mühendisliği Öğrencisi</h1>
+                <p>Marmara Üniversitesi 3. Sınıf öğrencisiyim. Backend geliştirme ve Java, Python, Spring Boot teknolojilerine ilgi duyuyorum.</p>
+                <button class="btn">Detay Gör</button>
             </div>
-            <div class="lab-hero-image">
-                <div class="lab-placeholder-icon">Görsel</div>
-            </div>
-        </section>
-
-        <section class="lab-cards-section">
-            <div class="lab-card">
-                <h3>Kart Başlığı</h3>
-                <p>Kısa açıklama</p>
-                <button class="lab-btn">Buton</button>
-            </div>
-            <div class="lab-card">
-                <h3>Kart Başlığı</h3>
-                <p>Kısa açıklama</p>
-                <button class="lab-btn">Buton</button>
-            </div>
-            <div class="lab-card">
-                <h3>Kart Başlığı</h3>
-                <p>Kısa açıklama</p>
-                <button class="lab-btn">Buton</button>
-            </div>
-            <div class="lab-card">
-                <h3>Kart Başlığı</h3>
-                <p>Kısa açıklama</p>
-                <button class="lab-btn">Buton</button>
-            </div>
-            <div class="lab-card">
-                <h3>Kart Başlığı</h3>
-                <p>Kısa açıklama</p>
-                <button class="lab-btn">Buton</button>
-            </div>
-            <div class="lab-card">
-                <h3>Kart Başlığı</h3>
-                <p>Kısa açıklama</p>
-                <button class="lab-btn">Buton</button>
+            <div class="hero-image">
+                Profil / Görsel Alanı (Stretch Testi)
             </div>
         </section>
 
-        <section class="lab-flex-grow-section">
-            <div class="lab-box lab-box1">
-                <h4>1 Kutu</h4>
-                <p>flex-grow: 1;</p>
-                <button class="lab-btn">Buton</button>
+        <section class="cards-section">
+            <div class="card">
+                <h3>BAĞIŞ TAKİP SİSTEMİ</h3>
+                <p>Java ile geliştirilmiş, bağışçı ve bağış yönetim sistemi.</p>
+                <button class="btn">İncele</button>
             </div>
-            <div class="lab-box lab-box2">
-                <h4>2 Kutu</h4>
-                <p>flex-grow: 2;</p>
-                <button class="lab-btn">Buton</button>
+            <div class="card">
+                <h3>Araç Kiralama Sistemi</h3>
+                <p>Python ile veritabanı işlemleri ve sistem yönetimi.</p>
+                <button class="btn">İncele</button>
             </div>
-            <div class="lab-box lab-box3">
-                <h4>3 Kutu</h4>
-                <p>flex-grow: 1;</p>
-                <button class="lab-btn">Buton</button>
+            <div class="card">
+                <h3>Chaos Engineering</h3>
+                <p>Chaos Mesh ve Kubernetes kullanarak HTTP delay deneyleri.</p>
+                <button class="btn">İncele</button>
+            </div>
+            <div class="card">
+                <h3>İş'te Yapay Zeka</h3>
+                <p>Üretken Akademi ve Esenler Bld. destekli eğitim programı.</p>
+                <button class="btn">İncele</button>
             </div>
         </section>
 
-        <footer class="lab-footer">
-            <p>&copy; 2026 - Temel Flexbox Örneği | Ahmet Gemici</p>
+        <section class="grow-section">
+            <div class="grow-box box1">
+                <h4>Temel Diller</h4>
+                <p>flex-grow: 1; (Java, Python, C)</p>
+                <button class="btn">İncele</button>
+            </div>
+            <div class="grow-box box2">
+                <h4>Uzmanlık Alanları</h4>
+                <p>flex-grow: 2; (Backend, API, Spring Boot)</p>
+                <button class="btn">İncele</button>
+            </div>
+            <div class="grow-box box3">
+                <h4>Araçlar</h4>
+                <p>flex-grow: 1; (Git, Linux)</p>
+                <button class="btn">İncele</button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Flexbox Ödevi - Ahmet Gemici - Marmara Üniversitesi | <a href="https://github.com/agemici" target="_blank">GitHub</a></p>
         </footer>
 
     </div>
+
 </body>
 </html>
